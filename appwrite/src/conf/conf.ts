@@ -1,0 +1,8 @@
+// Production grade approach so that TypeScript does't give error ex-> we have to put ! for forcefully enrap the var
+// But with this approach we are certain that our variable is always present
+
+const conf = {
+    APPWRITE_ENDPOINT: String(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT),
+    APPWRITE_PROJECT_ID: String(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID),
+}
+export default conf
