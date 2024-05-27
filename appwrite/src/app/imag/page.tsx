@@ -3,30 +3,33 @@
 import { useState } from 'react';
 import service from "@/appwrite/config"; // Assuming your Appwrite service
 
-const page = () => {
+const ImageHandling = () => {
   const [selectedImages, setSelectedImages] = useState([]);
+  var imgArray = [];
 
   const handleImageChange = (event) => {
     const files = event.target.files;
 
-    if (files.length > 5) {
-      alert('You can only select up to 5 images.'); // Or display an error message
+    if (files.length > 4) {
+      alert('You can only select up to 4 images.'); // Or display an error message
       return; // Prevent updating state if selection exceeds limit
     }
 
-    setSelectedImages([...files]); // Update state with all selected files (up to 5)
+    setSelectedImages([...files]); // Update state with all selected files (up to 4)
   };
 
   const uploadMultipleImages = async () => {
     const uploadPromises = selectedImages.map(async (file) => {
       try {
         const response = await service.uploadFile(file); // Call service function
-        console.log('Image uploaded successfully:', response);
+        imgArray.push(response?.$id)
       } catch (error) {
         console.error('Error uploading image:', error);
         // Handle individual upload errors (e.g., display error message)
       }
     });
+
+    console.log(imgArray)
 
     try {
       await Promise.all(uploadPromises);
@@ -43,18 +46,26 @@ const page = () => {
     <div>
       <div className="w-1/3 px-2">
         <label>Your Image Files (Max 5)
-          <input type="file" name="myImages" accept="image/*" multiple  onChange={handleImageChange} />
+          <input type="file" name="myImages" accept="image/*" multiple onChange={handleImageChange} />
         </label>
 
         <button type="submit" className="w-full" onClick={() => uploadMultipleImages()}>
           {"Submit"}
         </button>
+
+        {/* {<div className="w-full mb-4">
+                    <img
+                        src={service.getFilePreview("665358590032b95733c3")}
+                        alt={"Not found"}
+                        className="rounded-lg"
+                    />
+                </div>} */}
       </div>
     </div>
   );
 };
 
-export default page;
+export default ImageHandling;
 
 
 
