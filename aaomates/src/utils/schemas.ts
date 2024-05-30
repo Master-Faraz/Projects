@@ -53,5 +53,6 @@ export const CreatePostSchema = z.object({
     img3: z.string(),
     img4: z.string(),
     img5: z.string(),
+    name: z.string(),
 
 })

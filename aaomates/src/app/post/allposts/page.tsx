@@ -1,39 +1,12 @@
-"use client"
-import service from "@/appwrite/config";
-import Card from "@/components/Card";
-import { useEffect, useState } from "react";
+import AllPosts from '@/components/post/AllPosts'
+import React from 'react'
 
-
-const AllPosts = () => {
-
-    const [blogs, setBlogs] = useState([])
-
-
-    // const handleClick = async () => {
-    //     await service.getPosts().then((res) => setBlogs(res.documents))
-
-    // }
-
-    useEffect(() => {
-        ; (async () => {
-            await service.getPosts().then((res) => setBlogs(res.documents))
-
-        })()
-    }, [blogs])
-
-
+const page = () => {
     return (
-        <div >
-            {/* <button onClick={() => { handleClick() }}>Show all Blogs</button> */}
-            <div className="flex space-x-10 mt-2">
-                {
-                    blogs?.map((blog: any, index: any) => (
-                        <Card key={index} {...blog} />
-                    ))
-                }
-            </div>
+        <div className='mt-[10vh]'>
+            <AllPosts />
         </div>
     )
 }
 
-export default AllPosts
+export default page

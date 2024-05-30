@@ -22,7 +22,7 @@ export class Service {
     // ToDo find the datatype of the below parameters *********************************************
 
 
-    async createPost({ title, address, state, city, status, slug, phone, pincode, uid, description, img1, img2, img3, img4, img5 }: any) {
+    async createPost({ title, address, state, city, status, slug, phone, pincode, uid, description, img1, img2, img3, img4, img5,name }: any) {
         try {
             return await this.databases.createDocument(
                 conf.APPWRITE_DATABASE_ID,
@@ -44,6 +44,7 @@ export class Service {
                     img3,
                     img4,
                     img5,
+                    name
                 }
             )
         } catch (error) {
