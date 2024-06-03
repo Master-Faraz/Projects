@@ -1,8 +1,9 @@
 "use client"
 import authService from "@/appwrite/auth"
-const getuserdata = async () => {
-    const userData = await authService.getCurrentUser()
-    return userData?.email
+async function getuserdata () {
+    return await authService.getCurrentUser().then((userData: any) => { return userData }).catch((error) => console.error("Error in fetching the user :: " + error));
+    // console.log(userData);
+    // return userData
 }
 
 export default getuserdata

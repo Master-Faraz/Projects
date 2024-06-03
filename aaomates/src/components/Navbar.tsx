@@ -12,6 +12,7 @@ const Header = () => {
 
       <div className="flex space-x-9">
         <div className="mt-1 flex space-x-9">
+          <Link href={"/post/listings"}>My Listings</Link>
           <Link href={"/post/allposts"}>Find RoomMates</Link>
           <Link href={"/post/createpost"}>Share Room</Link>
           <Link href={"/auth/register"}>Register</Link>

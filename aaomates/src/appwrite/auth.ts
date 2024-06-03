@@ -56,6 +56,7 @@ export class AuthService {
 
     // Checking the status of current user -> user logged in or not 
     async getCurrentUser() {
+        // ************ WORKS ON CLIENT SIDE    **********
         try {
             return this.account.get(); //.  Get method is from documentation , this returns the promise
         } catch (error) {

@@ -2,7 +2,7 @@ import appwriteService from "../appwrite/config"
 import Link from 'next/link'
 import Image from 'next/image'
 
-function PostCard({ title, state, city, slug, phone, pincode, img1, name }: any) {
+function Card({ title, state, city, slug, phone, pincode, img1, name }: any) {
     return (
         <Link href={`/post/userpost/${slug}`}>
             <div className='w-full bg-gray-600 rounded-xl p-4'>
@@ -33,7 +33,7 @@ function PostCard({ title, state, city, slug, phone, pincode, img1, name }: any)
 }
 
 
-export default PostCard
+export default Card
 
 
 
