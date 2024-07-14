@@ -6,7 +6,6 @@ const UserData = () => {
     const [user, setUser] = useState(null)
 
     const handleClick = () => {
-
         try {
             authService.getCurrentUser().then((userData: any) => setUser(userData)).catch((error) => console.error("Error in fetching the user :: " + error))
 
