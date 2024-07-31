@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { sidebarLinks } from '@/constants';
 import { cn } from '@/lib/utils';
@@ -13,7 +12,9 @@ const MobileNav = () => {
 
   return (
     <section className="w-full max-w-[264px]">
+      {/* Sheet is a dialogue that expands on click */}
       <Sheet>
+        {/* as Child means we use the SheetTrigger as a child of Sheet */}
         <SheetTrigger asChild>
           <Image
             src="/icons/hamburger.svg"
@@ -22,8 +23,9 @@ const MobileNav = () => {
             alt="hamburger icon"
             className="cursor-pointer sm:hidden"
           />
+
         </SheetTrigger>
-        {/* <SheetContent side="left" className="border-none bg-dark-1">
+        <SheetContent side="left" className="border-none bg-dark-1">
           <Link href="/" className="flex items-center gap-1">
             <Image
               src="/icons/logo.svg"
@@ -65,7 +67,7 @@ const MobileNav = () => {
               </section>
             </SheetClose>
           </div>
-        </SheetContent> */}
+        </SheetContent>
       </Sheet>
     </section>
   );

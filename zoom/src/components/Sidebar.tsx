@@ -1,25 +1,27 @@
-"use client"
-import { sidebarLinks } from '@/constants';
-import { cn } from '@/lib/utils';
+'use client';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React from 'react'
+
+import { sidebarLinks } from '@/constants';
+import { cn } from '@/lib/utils';
 
 const Sidebar = () => {
+    // finding the current pathname in next js
     const pathname = usePathname();
+
     return (
-        <section className='sticky left-0 flex h-screen w-fit flex-col justify-between bg-dark-1 p-6 pt-28 text-white max-sm:hidden lg:w-[264px]'>
+        <section className="sticky left-0 top-0 flex h-screen w-fit flex-col  justify-between  bg-dark-1 p-6 pt-28 text-white max-sm:hidden lg:w-[264px]">
             <div className="flex flex-1 flex-col gap-6">
                 {sidebarLinks.map((item) => {
-                    // checking if the current path is same as the route for isActive
+                    // we use startsWith as we may have meeting/1234 for getting the active path
                     const isActive = pathname === item.route || pathname.startsWith(`${item.route}/`);
 
                     return (
                         <Link
                             href={item.route}
                             key={item.label}
-                            // cn helps to merge two className together
+                            // cn-> Class Name is used for adding multiple dynamic classnames
                             className={cn(
                                 'flex gap-4 items-center p-4 rounded-lg justify-start',
                                 {
@@ -27,21 +29,16 @@ const Sidebar = () => {
                                 }
                             )}
                         >
-                            <Image
-                                src={item.imgURL}
-                                alt={item.label}
-                                width={24}
-                                height={24}
-                            />
-                            <p className="text-lg font-semibold max-lg:hidden">
-                                {item.label}
-                            </p>
+
+                            <Image src={item.imgURL} alt={item.label} width={24} height={24} />
+
+                            <p className="text-lg font-semibold max-lg:hidden"> {item.label} </p>
                         </Link>
                     );
                 })}
             </div>
         </section>
-    )
-}
+    );
+};
 
-export default Sidebar
+export default Sidebar;
