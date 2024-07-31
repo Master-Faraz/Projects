@@ -10,8 +10,10 @@ import { useRouter } from 'next/navigation';
 
 const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
   const router = useRouter();
-  const { endedCalls, upcomingCalls, callRecordings, isLoading } =
-    useGetCalls();
+
+  // use get calls is custom hook
+  const { endedCalls, upcomingCalls, callRecordings, isLoading } = useGetCalls();
+  
   const [recordings, setRecordings] = useState<CallRecording[]>([]);
 
   const getCalls = () => {
